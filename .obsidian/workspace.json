@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Goals.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Goals"
+              "title": "README"
             }
           }
         ]
@@ -170,6 +170,7 @@
   },
   "active": "837b6943fc7e3975",
   "lastOpenFiles": [
+    "Goals.md",
     "README.md",
     "test",
     "runs/lunarvim",
@@ -179,7 +180,6 @@
     "runs",
     "runs/runs/test",
     "runs/runs",
-    "run",
-    "Goals.md"
+    "run"
   ]
 }

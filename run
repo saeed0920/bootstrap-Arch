@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+#set -x # This for debug
+set -e
+
+script_dir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+filters=""
+dry="0"
+
+# check the all argument for dry mode
+while [[ $# > 0 ]]; do
+  if [[ $1 == "--dry" ]]; then
+    dry="1"
+  else 
+    filters+="$1"
+  fi
+  shift
+done 
+
+# Functions
+log () {
+  if [[ "$dry" == "1" ]] ; then
+    echo "[DRY_RUN]: $@"
+  else 
+    echo "$@"
+  fi
+}
+
+execute () {
+  log "execute: $@"
+  if [[ "$dry" == "1" ]] ; then
+    return
+  fi
+  "$@"
+}
+
+log "$script_dir -- $filters"
+cd $script_dir
+scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f | sort)
+
+for script in $scripts ; do 
+  #this statement for filtring the argument will pass means you can run the special script as you want
+  if echo "$script" | grep -qv "$filters" ; then 
+    log "Filtring $script"
+      continue
+  fi 
+  execute $script
+done
+

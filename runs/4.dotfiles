@@ -3,50 +3,98 @@ echo ""
 echo "------------- Dotfiles --------------"
 echo ""
 
-
 echo "Add chaotic-aur repo and mirror in pacman"
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-sudo echo >> /etc/pacman.conf
 echo "[chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syu
 
 sudo gpasswd -a $USER input
 sudo pacman -S stow i3-wm i3status i3blocks i3lock-color fzf zsh rofi rofi-greenclip clipman playerctl picom \
-feh bat network-manager-applet bluetui wmctrl xdotool libinput-gestures i3-battery-popup-git i3status-rust pasystray libxkbfile yay docker 
+feh bat network-manager-applet bluetui wmctrl xdotool libinput-gestures i3-battery-popup-git i3status-rust \
+pasystray libxkbfile yay docker obsidian flameshot google-chrome brave spotify-adblock uget wget curl discord \
+hiddify gparted dolphin vim
 yay -S xkb-switch
+sudo usermod -aG docker $USER
+sudo usermod -aG disk $USER
+
+echo ""
+echo "---- Gnu Stow ----"
+git clone https://github.com/saeed0920/DotFiles.git ${HOME}/DotFiles
+cd ${HOME}/DotFiles
+git fetch -v
+git pull -v
+echo ""
+echo "Warning for useing stow"
+for i in {5..1}; do
+    echo "$i"
+    sleep 1 
+done
+stow .
+stowUseAdopt="n"
+read -p "Do you want use stow with --adopt ? [y\N] " stowUseAdopt
+if [[ "$stowUseAdopt" = "y" ]]; then
+  echo ""
+  echo "using stow with adopt ..."
+  for i in {8..1}; do
+    echo "$i"
+    sleep 1 
+  done
+  stow --adopt .
+fi
+
+echo ""
+echo "---- Discord -----"
+echo "Create shortcut application for discord proxy-version in ~/.local/share/applications"
+mkdir -p ${HOME}/.local/share/applications
+echo "[Desktop Entry]
+Name=Discord (Proxy)
+StartupWMClass=discord
+GenericName=Internet Messenger
+Exec=/usr/bin/discord --proxy-server=socks5://127.0.0.1:12334
+Icon=discord
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/usr/bin" > ${HOME}/.local/share/applications/discord-proxy.desktop
+sleep 2
 
 
+echo ""
 echo "---- ZSH ----"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/mrx04programmer/ZshTheme-ArchCraft/ ${ZSH:-~/.oh-my-zsh}/themes/ZshTheme-ArchCraft
 mv ${ZSH:-~/.oh-my-zsh}/themes/ZshTheme-ArchCraft/archcraft-dwm.zsh-theme ${ZSH:-~/.oh-my-zsh}/themes/
+-rm -rf ${ZSH:-~/.oh-my-zsh}/themes/ZshTheme-ArchCraft
 
 
+echo ""
 echo "--- Dunst ---"
-mkdir -p $HOME/Desktop/project
-git clone https://github.com/dunst-project/dunst.git
-cd dunst
+mkdir -p ${HOME}/Desktop/project
+git clone https://github.com/dunst-project/dunst.git ${HOME}/Desktop/project/dunst
+cd ${HOME}/Desktop/project/dunst
 git fetch
 git pull
 make
 sudo make install
+rm -rf ${HOME}/Desktop/project/dunst
 
 echo "---- SDDM ----"
 echo "You can see the themes in https://github.com/Keyitdev/sddm-astronaut-theme/blob/master/Backgrounds"
 echo "But suggest to install the pixel_sakura_static theme"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
 
+echo ""
 echo "---- Rofi ----"
-mkdir -p ~/Desktop/project/
+mkdir -p ${HOME}/Desktop/project/
 git clone https://github.com/lr-tech/rofi-themes-collection.git ~/Desktop/project/rofi-themes-collection
-mkdir -p ~/.local/share/rofi/themes/
-cp ~/Desktop/project/rofi-themes-collection/themes/squared-everforest.rasi ~/.local/share/rofi/themes/
+mkdir -p ${HOME}/.local/share/rofi/themes/
+cp ${HOME}/Desktop/project/rofi-themes-collection/themes/squared-everforest.rasi ~/.local/share/rofi/themes/
+rm -rf ${HOME}/Desktop/project/rofi-themes-collection 
 echo ""
 echo "Run Rofi in run mode, then run rofi-theme-selector. 
 Search for your desired theme, press enter to preview, then Alt+a to accept the new theme.
@@ -54,21 +102,10 @@ Enjoy your new Rofi theme.
 squared-everforest
 "
 touch ~/DotFiles/.config/rofi/config.rasi
-echo "@theme '${HOME}/.local/share/rofi/themes/squared-everforest.rasi'" | tee  ~/DotFiles/.config/rofi/config.rasi
-sleep 10 
+echo "@theme '${HOME}/.local/share/rofi/themes/squared-everforest.rasi'" | tee ~/DotFiles/.config/rofi/config.rasi
 
 
-echo "---- Gnu Stow ----"
-git clone https://github.com/saeed0920/DotFiles.git ~/DotFiles
-cd ~/DotFiles
 echo ""
-echo "Warning for useing stow with adopt option!"
-for i in {20..1}; do
-    echo "$i"
-    sleep 1 
-done
-stow . || stow --adopt .
-
 echo "--- End ---"
 echo ""
 echo "Pls reboot the system!"

@@ -170,8 +170,9 @@
   },
   "active": "837b6943fc7e3975",
   "lastOpenFiles": [
-    "Goals.md",
     "README.md",
+    "test.txt",
+    "Goals.md",
     "test",
     "runs/lunarvim",
     "runs/neovim",

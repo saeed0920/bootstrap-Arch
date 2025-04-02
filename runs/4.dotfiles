@@ -16,7 +16,7 @@ sudo gpasswd -a $USER input
 sudo pacman -S stow i3-wm i3status i3blocks i3lock-color fzf zsh rofi rofi-greenclip clipman playerctl picom \
 feh bat network-manager-applet bluetui wmctrl xdotool libinput-gestures i3-battery-popup-git i3status-rust \
 pasystray libxkbfile yay docker obsidian flameshot google-chrome brave spotify-adblock uget wget curl discord \
-hiddify gparted dolphin vim tmux pulseaudio ttf-font-awesome vazirmatn-fonts ttf-jetbrains-mono ttf-jetbrains-mono-nerd brightnessctl
+hiddify gparted dolphin vim tmux pulseaudio ttf-font-awesome vazirmatn-fonts ttf-jetbrains-mono ttf-jetbrains-mono-nerd brightnessctl xsel
 yay -S xkb-switch
 sudo usermod -aG docker $USER
 sudo usermod -aG disk $USER

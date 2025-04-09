@@ -7,6 +7,13 @@ script_dir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 filters=""
 dry="0"
 
+
+# Check if user run this script with sudo
+if [[ "$HOME" = "/root" ]]; then 
+  echo "Don't run this script on sudo"
+  exit 1
+fi
+
 # check the all argument for dry mode
 while [[ $# > 0 ]]; do
   if [[ $1 == "--dry" ]]; then

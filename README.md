@@ -11,17 +11,20 @@
 
 <hr>
 
-- [ ] Maybe use polybar for i3status bar
-- [ ] Separate the dotfiles script
 - [x] Also Add obsidian and vim for installing , flameshot ,chrome or whatever
 - [x] file manager with config
 - [x] Spotify
 - [x] Discord
-- [x]  Uget ,wget ,curl
-- [x]  Also V2ray clients
+- [x] Uget ,wget ,curl
+- [x] Also V2ray clients
 - [x] Write the script for open my project in $HOME/Desktop/projects with lvim
+- [x] set notif with dunst to copied in clipboard
+- [ ] Maybe use polybar for i3status bar
+- [ ] Separate the dotfiles script
 - [ ] Use tmux and maybe write the script for that : to create session or move into the session or run the commands (npm run dev). something likes ready-tmux
-- [ ] set notif with dunst to copied in clipboard
+- [ ] Set order to installing zsh before lunarvim 
+- [ ] add Konsole
+- [ ] fix the display manager (set to sddm)
 
 <hr>
 

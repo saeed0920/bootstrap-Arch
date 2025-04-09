@@ -3,6 +3,6 @@
 echo "Hello from mirror script"
 
 sudo pacman -S reflector
-sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/etc/pacman.d/mirrorlist.backup
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sudo reflector --latest 200 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
 

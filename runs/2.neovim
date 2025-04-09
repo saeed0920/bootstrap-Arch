@@ -2,7 +2,7 @@
 
 echo "Hello from neovim script"
 
-sudo pacman -Sy 'libluv' 'libutf8proc' 'libuv' 'lua51-lpeg' 'luajit' 'msgpack-c' 'tree-sitter-c'  'tree-sitter-lua'  'tree-sitter-markdown'  'tree-sitter-query'  'tree-sitter-vimdoc'  'tree-sitter-vim'  'tree-sitter>=0.22.2'  'unibilium' 'cmake' 'git' 'ninja' 'unzip'
+sudo pacman -Sy python-pip libluv libutf8proc  libuv   lua51-lpeg   luajit   msgpack-c   tree-sitter-c    tree-sitter-lua    tree-sitter-markdown    tree-sitter-query    tree-sitter-vimdoc    tree-sitter-vim    tree-sitter>=0.22.2    unibilium   cmake   git   ninja   unzip 
 pip install --upgrade pip
 pip3 install --user pynvim
 pip3 install --upgrade pynvim

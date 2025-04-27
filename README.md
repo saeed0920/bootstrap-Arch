@@ -25,8 +25,10 @@
 - [ ] Set order to installing zsh before lunarvim 
 - [ ] add Konsole
 - [ ] fix the display manager (set to sddm)
+- [ ] Add v2ray-core setup in this script 
 
 <hr>
 
 - [ ] In the end of day write the document for this repo
 And the goals for bash script here is to keep it simple!
+

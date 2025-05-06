@@ -13,15 +13,16 @@ Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syu
 
 sudo gpasswd -a $USER input
-sudo pacman -S stow i3-wm i3status i3blocks i3lock-color fzf zsh rofi rofi-greenclip clipman playerctl picom \
-feh bat network-manager-applet bluetui wmctrl xdotool libinput-gestures i3-battery-popup-git i3status-rust \
-pasystray libxkbfile yay docker obsidian flameshot google-chrome brave spotify-adblock uget wget curl discord \
-hiddify gparted dolphin vim tmux pulseaudio ttf-font-awesome vazirmatn-fonts ttf-jetbrains-mono \
-ttf-jetbrains-mono-nerd brightnessctl xsel alacritty
-
+sudo pacman -S stow i3-wm i3status-rust i3blocks i3lock-color fzf zsh rofi rofi-greenclip clipman playerctl picom
+sudo pacman -S feh bat network-manager-applet bluetui wmctrl xdotool libinput-gestures i3-battery-popup-git
+sudo pacman -S pasystray libxkbfile yay docker obsidian flameshot google-chrome brave spotify-adblock uget wget curl discord
+sudo pacman -S gparted dolphin vim tmux pulseaudio ttf-font-awesome vazirmatn-fonts ttf-jetbrains-mono
+sudo pacman -S ttf-jetbrains-mono-nerd brightnessctl xsel alacritty alsa-utils blueman flatpak kitty
 yay -S xkb-switch
 sudo usermod -aG docker $USER
 sudo usermod -aG disk $USER
+alsactl init
+flatpak install flathub org.telegram.desktop
 
 echo ""
 echo "---- Gnu Stow ----"
@@ -49,21 +50,6 @@ else
   stow .
 fi
 
-echo ""
-echo "---- Discord -----"
-echo "Create shortcut application for discord proxy-version in ~/.local/share/applications"
-mkdir -p ${HOME}/.local/share/applications
-echo "[Desktop Entry]
-Name=Discord (Proxy)
-StartupWMClass=discord
-GenericName=Internet Messenger
-Exec=/usr/bin/discord --proxy-server=socks5://127.0.0.1:12334
-Icon=discord
-Type=Application
-Categories=Network;InstantMessaging;
-Path=/usr/bin" > ${HOME}/.local/share/applications/discord-proxy.desktop
-sleep 2
-
 
 echo ""
 echo "---- ZSH ----"
@@ -81,24 +67,19 @@ rm -rf ${ZSH:-~/.oh-my-zsh}/themes/ZshTheme-ArchCraft/
 echo ""
 echo "--- Dunst ---"
 mkdir -p ${HOME}/Desktop/project
-git clone https://github.com/dunst-project/dunst.git ${HOME}/Desktop/project/dunst
+git clone https://github.com/dunst-project/dunst.git ${HOME}/Desktop/project/dunst && \
 cd ${HOME}/Desktop/project/dunst
 git fetch
 git pull
-make
+make && \
 sudo make install
 rm -rf ${HOME}/Desktop/project/dunst
-
-echo "---- SDDM ----"
-echo "You can see the themes in https://github.com/Keyitdev/sddm-astronaut-theme/blob/master/Backgrounds"
-echo "But suggest to install the pixel_sakura_static theme"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
 
 echo ""
 echo "---- Rofi ----"
 mkdir -p ${HOME}/Desktop/project/
-git clone https://github.com/lr-tech/rofi-themes-collection.git ~/Desktop/project/rofi-themes-collection
-mkdir -p ${HOME}/.local/share/rofi/themes/
+git clone https://github.com/lr-tech/rofi-themes-collection.git ~/Desktop/project/rofi-themes-collection && \
+mkdir -p ${HOME}/.local/share/rofi/themes/ && \
 cp ${HOME}/Desktop/project/rofi-themes-collection/themes/squared-everforest.rasi ~/.local/share/rofi/themes/
 rm -rf ${HOME}/Desktop/project/rofi-themes-collection 
 echo ""

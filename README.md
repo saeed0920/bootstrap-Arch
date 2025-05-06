@@ -1,7 +1,7 @@
 ### Todo List
   - [x] Install all apps for current i3
   - [x] Installing configuration 
-  - [ ] Ways for i3_wallet 
+  - [ ] Ways for i3_wallet (gnome,kde,xfce)
   - [x] Installing font
 	  - [x] Alacritty font (Jetbiens font mono) ,JetBrainsMono Nerd Font 10 
 	  - [x] Awsome font 
@@ -19,13 +19,15 @@
 - [x] Also V2ray clients
 - [x] Write the script for open my project in $HOME/Desktop/projects with lvim
 - [x] set notif with dunst to copied in clipboard
+- [x] fix the display manager (set to sddm)
+- [x] Set order to installing zsh before lunarvim 
 - [ ] Maybe use polybar for i3status bar
 - [ ] Separate the dotfiles script
 - [ ] Use tmux and maybe write the script for that : to create session or move into the session or run the commands (npm run dev). something likes ready-tmux
-- [ ] Set order to installing zsh before lunarvim 
-- [ ] add Konsole
-- [ ] fix the display manager (set to sddm)
 - [ ] Add v2ray-core setup in this script 
+- [ ] Check why pip installition in nvim file not working 
+
+- [-] add Konsole // maybe not!
 
 <hr>
 

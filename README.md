@@ -26,6 +26,14 @@
 - [ ] Use tmux and maybe write the script for that : to create session or move into the session or run the commands (npm run dev). something likes ready-tmux
 - [ ] Add v2ray-core setup in this script 
 - [ ] Check why pip installition in nvim file not working 
+- [ ] Set the autoStart file and connect with I3 Or we can use some service 
+- Some work todo I thing 
+    - [ ] First check the /etc/xdg/autostart 
+    - [ ] Then check the ~/.config/autostart
+    - [ ] Also can check /etc/NetworkManager/dispatcher.d/99-restart-v2ray
+    - [ ] Search About xinit and configs file in ~/.xinitrc
+    - [ ] Maybe we can use some feature about that in i3-garuda
+
 
 - [-] add Konsole // maybe not!
 

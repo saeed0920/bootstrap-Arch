@@ -2,6 +2,7 @@
 
 echo ""
 echo "---- ZSH ----"
+sudo pacman -S zsh
 
 export RUNZSH=no
 if  [[ -z $ZSH ]]; then 

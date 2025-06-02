@@ -35,7 +35,7 @@
     - [ ] Maybe we can use some feature about that in i3-garuda
 
 
-- [-] add Konsole // maybe not!
+- [-] add Konsole 
 
 <hr>
 

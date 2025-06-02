@@ -18,7 +18,7 @@ sudo pacman -S feh bat network-manager-applet bluetui wmctrl xdotool libinput-ge
 sudo pacman -S pasystray libxkbfile yay docker obsidian flameshot google-chrome brave spotify-adblock uget wget curl discord
 sudo pacman -S gparted dolphin vim tmux pulseaudio ttf-font-awesome vazirmatn-fonts ttf-jetbrains-mono zoxide
 sudo pacman -S ttf-jetbrains-mono-nerd brightnessctl xsel alacritty alsa-utils blueman flatpak kitty tree resvg yazi
-yay -S xkb-switch
+yay -S xkb-switch feh
 sudo usermod -aG docker $USER
 sudo usermod -aG disk $USER
 alsactl init

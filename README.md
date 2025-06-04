@@ -21,7 +21,9 @@
 - [x] set notif with dunst to copied in clipboard
 - [x] fix the display manager (set to sddm)
 - [x] Set order to installing zsh before lunarvim 
+- [ ] Fix the script to installation!
 - [ ] Maybe use polybar for i3status bar
+- [ ] Add auto-cpufreq
 - [ ] Separate the dotfiles script
 - [ ] Use tmux and maybe write the script for that : to create session or move into the session or run the commands (npm run dev). something likes ready-tmux
 - [ ] Add v2ray-core setup in this script 
